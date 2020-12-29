@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//GameMaster需要管理  玩家字典、道具字典
 public class GameMaster : MonoBehaviour {
     public Snake snake;
     private Vector3 targetDir;//蛇头移动的目标方向
@@ -17,6 +19,13 @@ public class GameMaster : MonoBehaviour {
     [HideInInspector]
     public int score;//分数
     public Timer timer;
+
+    //玩家字典、道具字典
+    public  Dictionary<int, Snake> playerDictionary = new Dictionary<int, Snake>();
+    public  Dictionary<int, Food> foodDictionary = new Dictionary<int, Food>();
+
+
+
     private static GameMaster _instance;
     public static GameMaster Instance
     {

@@ -26,7 +26,7 @@ public class Food : MonoBehaviour {
         Vector3 targetPos = target.transform.position;
         while(Vector3.Distance(transform.position, targetPos) > 2)
         {
-            Debug.Log("MoveTo");
+            //Debug.Log("MoveTo");
             transform.position = Vector3.MoveTowards(transform.position, targetPos, Time.deltaTime * speed);
             yield return null;
         }

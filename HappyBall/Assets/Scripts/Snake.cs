@@ -15,14 +15,17 @@ public class Snake : MonoBehaviour {
     public float moveSpeed; //移动速度
     public float bigSpeed = 0.1f;
     public float snakeV = 0f;//体积
-
+    private Vector2 BigSpped;
 
     //public GameObject leafBg;
     void Start () {
         LoadSkin();
         head.eatAction += Grow;
         head.dieAction += Die;
-	}
+        BigSpped = new Vector2(10f, 10f);
+        Debug.Log("vs2019");
+
+    }
 	
 	void Update () {
 		
@@ -48,7 +51,9 @@ public class Snake : MonoBehaviour {
     {
         //蛇身变大
         Debug.Log("Grow()");
-        head.transform.localScale += new Vector3(bigSpeed, bigSpeed, bigSpeed);
+         head.transform.localScale += new Vector3(bigSpeed, bigSpeed, bigSpeed);
+        //head.GetComponent<RectTransform>().sizeDelta += BigSpped;
+        //head.;
 
         //记录体积
         snakeV += bigSpeed;
