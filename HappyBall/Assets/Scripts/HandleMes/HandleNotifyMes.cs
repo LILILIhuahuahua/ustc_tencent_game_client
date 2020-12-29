@@ -44,7 +44,9 @@ public class HandleNotifyMes : MonoBehaviour
             PlayerMsg player = entityInfoChangeNotify.PlayerMsg;
 
             //2.从字典中获取玩家对象
-            GameMaster.Instance.playerDictionary.TryGetValue(playerId, out Snake snake);
+            //GameMaster.Instance.playerDictionary.TryGetValue(playerId, out GameObject snake);
+            //Debug.Log(snake);
+
             Debug.Log("玩家信息改变了");
 
         }//道具的信息改变了

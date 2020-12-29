@@ -32,6 +32,8 @@ public class FoodSpawner : MonoBehaviour {
 	void Update () {
         if (GameMaster.Instance.isOver) CancelInvoke();
 	}
+
+    //之后需要改成服务器发来数据，动态生成Food
     public void SpawnFood()
     {
         //食物最大个数限制

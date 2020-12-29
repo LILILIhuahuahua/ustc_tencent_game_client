@@ -21,7 +21,7 @@ public class GameMaster : MonoBehaviour {
     public Timer timer;
 
     //玩家字典、道具字典
-    public  Dictionary<int, Snake> playerDictionary = new Dictionary<int, Snake>();
+    public  Dictionary<int, GameObject> playerDictionary = new Dictionary<int, GameObject>();
     public  Dictionary<int, Food> foodDictionary = new Dictionary<int, Food>();
 
 
@@ -39,6 +39,10 @@ public class GameMaster : MonoBehaviour {
         _instance = this;
     }
     void Start () {
+        //Test
+        
+
+
         level = 1;
         int mode = PlayerPrefs.GetInt(Constant.Mode, 0);
         timer.timeUpAction += GameOver;
