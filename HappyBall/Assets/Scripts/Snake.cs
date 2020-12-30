@@ -7,7 +7,7 @@ public class Snake : MonoBehaviour {
     public HeadNode head;
     public float rotateSpeed = 10;//旋转的角速度
     public float moveStep = 8;//每次前进的距离（步长）
-    public GameObject bodyPrefab;//蛇身预制体
+    private GameObject bodyPrefab;//蛇身预制体
     private Sprite headSprite;//蛇头图片
     private Sprite[] bodySprites = new Sprite[2];//蛇身图片
     [HideInInspector]
@@ -16,6 +16,7 @@ public class Snake : MonoBehaviour {
     public float bigSpeed = 0.1f;
     public float snakeV = 0f;//体积
     private Vector2 BigSpped;
+    public static  int PlayerMyselfId = 8080;
 
     //public GameObject leafBg;
     void Start () {
@@ -23,7 +24,7 @@ public class Snake : MonoBehaviour {
         head.eatAction += Grow;
         head.dieAction += Die;
         BigSpped = new Vector2(10f, 10f);
-        Debug.Log("vs2019");
+
 
     }
 	

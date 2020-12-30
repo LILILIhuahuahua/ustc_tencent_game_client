@@ -44,32 +44,71 @@ public class NetConnect : MonoBehaviour {
          Send("Hello i am client");*/
 
         //测试用
-        //1.声明
-        GMessage gMessage = new GMessage();
-        Notify notify = new Notify();
-        PlayerMsg playerMesg = new PlayerMsg();
-        CoordinateXY pos = new CoordinateXY();
-        EntityInfoChangeNotify entityInfoChangeNotify = new EntityInfoChangeNotify();
-       
-        gMessage.MsgType = 1;
-        gMessage.SeqId = 2;
-        //2.写数据
-        entityInfoChangeNotify.EntityType = Message.PlyerType; //玩家
-        entityInfoChangeNotify.EntityId = 8080;
+        //1.测试EntityInfoChangeNotify
+        //{
+        //    //1.声明
+        //    GMessage gMessage = new GMessage();
+        //    Notify notify = new Notify();
+        //    PlayerMsg playerMesg = new PlayerMsg();
+        //    CoordinateXY pos = new CoordinateXY();
+        //    EntityInfoChangeNotify entityInfoChangeNotify = new EntityInfoChangeNotify();
 
-        playerMesg.PlayerId = 8080;
-        
-        pos.CoordinateX = 120;
-        pos.CoordinateY = 200;
+        //    gMessage.MsgType = 1;
+        //    gMessage.SeqId = 2;
+        //    //2.写数据
+        //    entityInfoChangeNotify.EntityType = Message.PlyerType; //玩家
+        //    entityInfoChangeNotify.EntityId = 8080;
 
-        //3.填包
-        playerMesg.PlayerPosition = pos;
-        entityInfoChangeNotify.PlayerMsg = playerMesg;
-        notify.EntityInfoChangeNotify = entityInfoChangeNotify;
-        gMessage.Notify = notify;
+        //    playerMesg.PlayerId = 8080;
 
-        //4.测试
-        HandleMes.transmitMes(gMessage);
+        //    pos.CoordinateX = 120;
+        //    pos.CoordinateY = 200;
+
+        //    //3.填包
+        //    playerMesg.PlayerPosition = pos;
+        //    entityInfoChangeNotify.PlayerMsg = playerMesg;
+        //    notify.EntityInfoChangeNotify = entityInfoChangeNotify;
+        //    gMessage.Notify = notify;
+
+        //    //4.测试
+        //    HandleMes.transmitMes(gMessage);
+        //}
+
+        //2.测试gameGlobalInfoNotify
+        {
+            //1.声明
+            GMessage gMessage = new GMessage();
+            Notify notify = new Notify();
+            GameGlobalInfoNotify gameGlobalInfoNotify = new GameGlobalInfoNotify();
+            PlayerMsg playerMesg = new PlayerMsg();
+            CoordinateXY pos = new CoordinateXY();
+
+
+
+            //2.写数据
+            gMessage.MsgType = 1;
+            gMessage.SeqId = 2;
+            gameGlobalInfoNotify.PlayerNumber = 1;
+            gameGlobalInfoNotify.Time = 2;
+
+
+            playerMesg.PlayerId = 8081;
+            playerMesg.SnakeStatus = SNAKE_STATUS.Live;
+            playerMesg.PlayerSize = 45;
+            pos.CoordinateX = 120f;
+            pos.CoordinateY = 200f;
+
+            //3.填包
+            playerMesg.PlayerPosition = pos;
+            gameGlobalInfoNotify.PlayerMsg.Add(playerMesg);
+            notify.GameGlobalInfoNotify = gameGlobalInfoNotify;
+            gMessage.Notify = notify;
+
+            //4.测试
+            HandleMes.transmitMes(gMessage);
+        }
+
+
     }
 
 

@@ -44,21 +44,5 @@ class HandleMes
         }
     }
 
-    /*//处理Notify消息
-    public void HandleNotifyMessage(Notify notifyMessage)
-    {
-
-    }
-
-    //处理Request消息
-    public void HandleRequestMessage(Request requestMessage)
-    {
-
-    }
-
-    //处理Response消息
-    public void HandleResponseMessage(Response responseMessage)
-    {
-
-    }*/
+    
 }

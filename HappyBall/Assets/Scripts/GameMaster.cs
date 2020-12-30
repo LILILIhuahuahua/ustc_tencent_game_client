@@ -22,7 +22,7 @@ public class GameMaster : MonoBehaviour {
 
     //玩家字典、道具字典
     public  Dictionary<int, GameObject> playerDictionary = new Dictionary<int, GameObject>();
-    public  Dictionary<int, Food> foodDictionary = new Dictionary<int, Food>();
+    public  Dictionary<int, GameObject> foodDictionary = new Dictionary<int, GameObject>();
 
 
 
@@ -40,7 +40,6 @@ public class GameMaster : MonoBehaviour {
     }
     void Start () {
         //Test
-        
 
 
         level = 1;
