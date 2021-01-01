@@ -65,28 +65,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AudioManager.cs" />
-    <Compile Include="Assets\Scripts\BodyNode.cs" />
     <Compile Include="Assets\Scripts\Border.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollw.cs" />
     <Compile Include="Assets\Scripts\Canvas\CanvasFix.cs" />
     <Compile Include="Assets\Scripts\Common\EntityManager.cs" />
-    <Compile Include="Assets\Scripts\Common\Message.cs" />
+    <Compile Include="Assets\Scripts\Common\HandleMes\HandleMes.cs" />
+    <Compile Include="Assets\Scripts\Common\HandleMes\HandleNotifyMes.cs" />
+    <Compile Include="Assets\Scripts\Common\MessageConst.cs" />
+    <Compile Include="Assets\Scripts\Common\SendMes\SendMes.cs" />
     <Compile Include="Assets\Scripts\Constant.cs" />
-    <Compile Include="Assets\Scripts\Food.cs" />
-    <Compile Include="Assets\Scripts\FoodSpawner.cs" />
     <Compile Include="Assets\Scripts\GameMaster.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\GamePanel.cs" />
-    <Compile Include="Assets\Scripts\HandleMes\HandleMes.cs" />
-    <Compile Include="Assets\Scripts\HandleMes\HandleNotifyMes.cs" />
-    <Compile Include="Assets\Scripts\HappyBallProto.cs" />
-    <Compile Include="Assets\Scripts\HeadNode.cs" />
+    <Compile Include="Assets\Scripts\Hero\BodyNode.cs" />
+    <Compile Include="Assets\Scripts\Hero\HeadNode.cs" />
+    <Compile Include="Assets\Scripts\Hero\Node.cs" />
+    <Compile Include="Assets\Scripts\Hero\OtherHero.cs" />
+    <Compile Include="Assets\Scripts\Hero\Snake.cs" />
+    <Compile Include="Assets\Scripts\Item\Food.cs" />
+    <Compile Include="Assets\Scripts\Item\FoodSpawner.cs" />
     <Compile Include="Assets\Scripts\Net\NetConnect.cs" />
-    <Compile Include="Assets\Scripts\Node.cs" />
-    <Compile Include="Assets\Scripts\Snake.cs" />
-    <Compile Include="Assets\Scripts\SocketGameProtocol.cs" />
+    <Compile Include="Assets\Scripts\Protobuf\Message.cs" />
+    <Compile Include="Assets\Scripts\Protobuf\Msgenum.cs" />
+    <Compile Include="Assets\Scripts\Protobuf\Notify.cs" />
+    <Compile Include="Assets\Scripts\Protobuf\Request.cs" />
+    <Compile Include="Assets\Scripts\Protobuf\Response.cs" />
+    <Compile Include="Assets\Scripts\Protobuf\Struct.cs" />
     <Compile Include="Assets\Scripts\StartPanel.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
+    <Compile Include="Assets\Scripts\UnitTest\UnitTest.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Code/ustc_tencnet_game_client/HappyBall/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

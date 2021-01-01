@@ -21,9 +21,9 @@ public class GameMaster : MonoBehaviour {
     public Timer timer;
 
     //玩家字典、道具字典
-    public  Dictionary<int, GameObject> playerDictionary = new Dictionary<int, GameObject>();
+    public  Dictionary<int, GameObject> heroDictionary = new Dictionary<int, GameObject>();
     public  Dictionary<int, GameObject> foodDictionary = new Dictionary<int, GameObject>();
-
+    public Dictionary<int, GameObject> propDictionary = new Dictionary<int, GameObject>();
 
 
     private static GameMaster _instance;
@@ -39,9 +39,6 @@ public class GameMaster : MonoBehaviour {
         _instance = this;
     }
     void Start () {
-        //Test
-
-
         level = 1;
         int mode = PlayerPrefs.GetInt(Constant.Mode, 0);
         timer.timeUpAction += GameOver;

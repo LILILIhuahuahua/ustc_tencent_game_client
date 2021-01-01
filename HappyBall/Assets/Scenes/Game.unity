@@ -2199,6 +2199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 886010562}
   - component: {fileID: 886010563}
+  - component: {fileID: 886010564}
   m_Layer: 5
   m_Name: GameMaster
   m_TagString: Untagged
@@ -2245,6 +2246,18 @@ MonoBehaviour:
   length: 0
   score: 0
   timer: {fileID: 1855375542}
+--- !u!114 &886010564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 886010561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27ea10cefdaacfa49b4c9b1bcdeedd52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &940052177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3297,7 +3310,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3955872d9d47fb14e8f4949c7e9226d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6732923}
+  heroPrefab: {fileID: 952965627354079652, guid: f8edc048177318944a1a8d697370f6e5,
+    type: 3}
+  foodPrefab: {fileID: 0}
 --- !u!1 &1761368309
 GameObject:
   m_ObjectHideFlags: 0
@@ -4216,6 +4231,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1685473461}
     m_Modifications:
+    - target: {fileID: 952965627354079581, guid: f8edc048177318944a1a8d697370f6e5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 952965627354079651, guid: f8edc048177318944a1a8d697370f6e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4324,7 +4344,7 @@ PrefabInstance:
     - target: {fileID: 952965627354079652, guid: f8edc048177318944a1a8d697370f6e5,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: MyHero
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8edc048177318944a1a8d697370f6e5, type: 3}
