@@ -18,13 +18,14 @@ public class Snake : MonoBehaviour {
     private Vector2 BigSpped = new Vector2(10f, 10f);
     public static int HeroMyselfId = 8081;
     public static float HeroMyselfSize = MessageConst.HeroInitSize;
-
+    public GameObject invisibleMask;
     //public GameObject leafBg;
     void Start () {
         LoadSkin();
         head.eatAction += Grow;
         head.dieAction += Die;
-
+        head.invisibleAction += InvincibleMeselfHero;
+        InvincibleMeselfHero();
 
     }
 	
@@ -50,7 +51,11 @@ public class Snake : MonoBehaviour {
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(collision.tag== "MyselfHero")
+        {
+            return;
+        }
+
         if (collision.tag == "Food")
         {
             Debug.Log("碰撞到了食物");
@@ -60,14 +65,19 @@ public class Snake : MonoBehaviour {
             Debug.Log("碰撞到了其他Hero,OtherHeroId="+otherHero.OtherHeroId);
 
             //本地检测输赢
-            //Debug.Log("OtherHeroSize=" + otherHero.OtherHeroSize);
-            //Debug.Log("MyselfHeroSize=" + HeroMyselfSize);
-            if(HeroMyselfSize< otherHero.OtherHeroSize)
+            Debug.Log("OtherHeroSize=" + otherHero.OtherHeroSize);
+            Debug.Log("MyselfHeroSize=" + HeroMyselfSize);
+            if (HeroMyselfSize< otherHero.OtherHeroSize)
             {
+                Debug.Log("碰撞我输了");
                 //自己死亡
                 Die();
                 
                 //发送死亡包
+            }
+            else
+            {
+                Debug.Log("碰撞我赢了" );
             }
             
         }
@@ -154,5 +164,26 @@ public class Snake : MonoBehaviour {
         PlayerPrefs.SetInt(Constant.BestScore, Mathf.Max(GameMaster.Instance.score, bestS));
         //游戏结束面板
         GameMaster.Instance.GameOver();
+    }
+
+    public void InvincibleMeselfHero()
+    {
+        //将无敌玩家的Cricle Collider2D 变成inable，几秒钟之后再变回来
+        Collider2D MyselfHeroCollider2D = head.GetComponent<Collider2D>();
+
+        //几秒后变回来
+        StartCoroutine(invincible(MyselfHeroCollider2D, invisibleMask));
+    }
+    IEnumerator invincible(Collider2D heroCollider2D, GameObject invisibleMask)
+    {
+        Debug.Log("heroCollider2D.enabled = false");
+        //设置特效与不可碰撞
+        heroCollider2D.enabled = false;
+        invisibleMask.SetActive(true);
+        yield return new WaitForSeconds(MessageConst.InvincibleTime);
+        Debug.Log("heroCollider2D.enabled = ture");
+        heroCollider2D.enabled = true;
+        invisibleMask.SetActive(false);
+
     }
 }

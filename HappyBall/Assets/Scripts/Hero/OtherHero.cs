@@ -6,6 +6,7 @@ public class OtherHero : MonoBehaviour
 {
     public int OtherHeroId;
     public float OtherHeroSize = MessageConst.HeroInitSize;
+    public GameObject invisibleMask;
     // Start is called before the first frame update
     private static OtherHero _instance;
     public static OtherHero Instance

@@ -8,7 +8,9 @@ public class HeadNode : Node {
     private int eatCount = 0;
     public Action eatAction;
     public Action dieAction;
-	public void EatFood()
+    public Action invisibleAction;
+
+    public void EatFood()
     {
         AudioManager.Instance.PlayEat();
         eatCount++;

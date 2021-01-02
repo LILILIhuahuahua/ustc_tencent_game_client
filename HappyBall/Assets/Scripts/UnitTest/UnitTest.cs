@@ -9,9 +9,9 @@ public class UnitTest : MonoBehaviour
     {
         //TestEntityInfoChangeNotify();
         //TestgameGlobalInfoNotify();
-        TestAddHero();
+        TestInvincibleHero();
 
-        InvokeRepeating("TestUpateHero", 1, 2);
+        //InvokeRepeating("TestUpateHero", 1, 2);
     }
 
     // Update is called once per frame
@@ -158,6 +158,45 @@ public class UnitTest : MonoBehaviour
 
             //4.测试
             HandleMes.transmitMes(gMessage);
+        }
+    }
+
+    public void TestInvincibleHero()
+    {
+        Debug.Log("TestInvincibleHero");
+        //2.测试gameGlobalInfoNotify
+        {
+            //1.声明
+            GMessage gMessage = new GMessage();
+            Notify notify = new Notify();
+            GameGlobalInfoNotify gameGlobalInfoNotify = new GameGlobalInfoNotify();
+            HeroMsg heroMesg = new HeroMsg();
+            CoordinateXY pos = new CoordinateXY();
+
+
+
+            //2.写数据
+            gMessage.MsgType = MSG_TYPE.Notify;
+            gMessage.SeqId = 2;
+            gameGlobalInfoNotify.HeroNumber = 1;
+            gameGlobalInfoNotify.Time = 2;
+
+
+            heroMesg.HeroId = 8080;
+            heroMesg.HeroStatus = HERO_STATUS.Invincible;
+            heroMesg.HeroSize = 45;
+            pos.CoordinateX = 120f;
+            pos.CoordinateY = 200f;
+
+            //3.填包
+            heroMesg.HeroPosition = pos;
+            gameGlobalInfoNotify.HeroMsg.Add(heroMesg);
+            notify.GameGlobalInfoNotify = gameGlobalInfoNotify;
+            gMessage.Notify = notify;
+
+            //4.测试
+            HandleMes.transmitMes(gMessage);
+
         }
     }
 }

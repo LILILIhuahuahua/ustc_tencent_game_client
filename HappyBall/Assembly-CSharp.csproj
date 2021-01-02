@@ -68,9 +68,10 @@
     <Compile Include="Assets\Scripts\Border.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraFollw.cs" />
     <Compile Include="Assets\Scripts\Canvas\CanvasFix.cs" />
-    <Compile Include="Assets\Scripts\Common\EntityManager.cs" />
     <Compile Include="Assets\Scripts\Common\HandleMes\HandleMes.cs" />
     <Compile Include="Assets\Scripts\Common\HandleMes\HandleNotifyMes.cs" />
+    <Compile Include="Assets\Scripts\Common\HeroManager.cs" />
+    <Compile Include="Assets\Scripts\Common\ItemManager.cs" />
     <Compile Include="Assets\Scripts\Common\MessageConst.cs" />
     <Compile Include="Assets\Scripts\Common\SendMes\SendMes.cs" />
     <Compile Include="Assets\Scripts\Constant.cs" />

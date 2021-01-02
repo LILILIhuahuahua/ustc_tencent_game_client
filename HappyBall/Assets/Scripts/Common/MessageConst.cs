@@ -16,8 +16,11 @@ public class MessageConst
 
    
 
-    //PlayerMes
+    //HeroMes
     public const float HeroInitSize = 45;
+
+    //Invincible
+    public const int InvincibleTime = 10;
 
 
 }

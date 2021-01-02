@@ -27,15 +27,15 @@ public class HandleNotifyMes : MonoBehaviour
         //optional TimeNotify time = 3; //对局时间信息通知
         //optional MapInfo mapInfo = 4;
         Debug.Log("正在执行HandNotifyMessage函数");
-        if (notifyMessage.EntityInfoChangeNotify != null)
-        {
-            //执行实体信息改变（更新）函数
-            HandleEntityInfoChangeNotify(notifyMessage.EntityInfoChangeNotify);
-        }
         if (notifyMessage.GameGlobalInfoNotify != null)
         {
             //执行全局游戏通知函数  （进入对局时，接受所有需要渲染的数据）
             HandleGameGlobalInfoNotify(notifyMessage.GameGlobalInfoNotify);
+        }
+        if (notifyMessage.EntityInfoChangeNotify != null)
+        {
+            //执行实体信息改变（更新）函数
+            HandleEntityInfoChangeNotify(notifyMessage.EntityInfoChangeNotify);
         }
         if(notifyMessage.Time != null)
         {
@@ -53,12 +53,13 @@ public class HandleNotifyMes : MonoBehaviour
     public static  void HandleEntityInfoChangeNotify(EntityInfoChangeNotify entityInfoChangeNotify)
     {
         Debug.Log("正在执行HandleEntityInfoChangeNotify函数");
+
         //Hero信息改变了
         if (entityInfoChangeNotify.EntityType == ENTITY_TYPE.HeroType)
         {
             Debug.Log("玩家信息改变了");
             //调用updatePlayer函数
-            EntityManager.Instance.updateHero(entityInfoChangeNotify.HeroMsg);
+            HeroManager.Instance.updateHero(entityInfoChangeNotify.HeroMsg);
             
         }//道具的信息改变了
         else if (entityInfoChangeNotify.EntityType == ENTITY_TYPE.FoodType)
@@ -107,15 +108,29 @@ public class HandleNotifyMes : MonoBehaviour
         //依次获取各个玩家信息，调用EntityManager.addPlayer方法
         foreach (HeroMsg heroMsg in gameGlobalInfoNotify.HeroMsg)
         {
-            if (heroMsg.HeroId != Snake.HeroMyselfId && heroMsg.HeroStatus== HERO_STATUS.Live)
+            if (heroMsg.HeroId != Snake.HeroMyselfId )
             {
-                Debug.Log("正在HandleGameGlobalInfoNotify函数中addHero");
-                EntityManager.Instance.addHero(heroMsg);
-            }
-            else if(heroMsg.HeroStatus == HERO_STATUS.Dead)
-            {
-                Debug.Log("gameGlobalInfoNotify.heroMsg中有玩家死亡，需要removeHero");
-                EntityManager.Instance.removeHero(heroMsg);
+                //判断Hero状态
+                if(heroMsg.HeroStatus == HERO_STATUS.Live)
+                {
+                    Debug.Log("正在HandleGameGlobalInfoNotify函数中addHero");
+                    HeroManager.Instance.addHero(heroMsg);
+                }
+                else if (heroMsg.HeroStatus == HERO_STATUS.Dead)
+                {
+                    Debug.Log("gameGlobalInfoNotify.heroMsg中有玩家死亡，需要removeHero");
+                    HeroManager.Instance.removeHero(heroMsg);
+                }
+                else if (heroMsg.HeroStatus == HERO_STATUS.Invincible)
+                {
+                    Debug.Log("gameGlobalInfoNotify.heroMsg中有玩家处于无敌状态");
+                    HeroManager.Instance.addHero(heroMsg);
+                    HeroManager.Instance.InvincibleHero(heroMsg);
+                }
+                else
+                {
+                    Debug.Log("gameGlobalInfoNotify.heroMsg中有错误的玩家状态");
+                }
             }
             else if (heroMsg.HeroId == Snake.HeroMyselfId)
             {
@@ -128,9 +143,9 @@ public class HandleNotifyMes : MonoBehaviour
 
         //2.渲染道具
         //依次获取道具信息，调用EntityManager.addPlayer方法
-        foreach (ItemMsg itemoMsg in gameGlobalInfoNotify.ItemMsg)
+        foreach (ItemMsg itemMsg in gameGlobalInfoNotify.ItemMsg)
         {
-
+            ItemManager.Instance.addItem(itemMsg);
         }
     }
 }
